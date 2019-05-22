@@ -1,4 +1,4 @@
-require('dotenv').config({path:__dirname+'/./../.env'});
+require('dotenv').config();
 
 const express = require('express')
     , bodyParser = require('body-parser')
@@ -33,8 +33,6 @@ massive(process.env.CONNECTION_STRING).then( db => {
   app.set('db', db);
 })
 
-const publicweb = process.env.PUBLICWEB || './publicweb';
-
 app.use( bodyParser.json() );
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Credentials', true);
@@ -51,7 +49,7 @@ app.use(function(req, res, next) {
 const baseUrl = '/api';
 
 // Shared API Endpoints
-app.get(`${baseUrl}/authConfig`, getConfig);
+// app.get(`${baseUrl}/authConfig`, getConfig);
 app.get(`${baseUrl}/shared/getAdmin`, checkAuthenticated, getAdmin);
 app.post(`${baseUrl}/shared/getuser`, checkAuthenticated, getUser);
 app.post(`${baseUrl}/shared/requestAccess`, checkAuthenticated, requestAccess);
