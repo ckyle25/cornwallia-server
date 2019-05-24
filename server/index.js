@@ -141,8 +141,8 @@ const baseUrl = '/api';
 //Auth Endpoints
 app.get('/auth', passport.authenticate('auth0'));
 app.get('/callback', passport.authenticate('auth0', {
-  successRedirect: `${process.env.FRONTEND_URL}/home`,
-  failureRedirect: `${process.env.FRONTEND_URL}/login`
+  successRedirect: `${process.env.FRONTEND_URL}home`,
+  failureRedirect: `${process.env.FRONTEND_URL}login`
 }))
 
 app.get('/auth/me', (req, res, next) => {
