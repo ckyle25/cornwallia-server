@@ -57,6 +57,26 @@ module.exports = {
       });
     },
 
+    completeWish: (req, res, next) => {
+      const body = req.body;
+      const dbInstance = req.app.get('db');
+
+      dbInstance.complete_wish([body.wishId])
+      .then(result => {
+          return res.status(200).send('Wish Completed');
+      });
+    },
+
+    reactivateWish: (req, res, next) => {
+      const body = req.body;
+      const dbInstance = req.app.get('db');
+
+      dbInstance.reactivate_wish([body.wishId])
+      .then(result => {
+          return res.status(200).send('Wish Reactivated');
+      });
+    },
+
     addWish: (req, res, next) => {
       const body = req.body;
       const dbInstance = req.app.get('db');

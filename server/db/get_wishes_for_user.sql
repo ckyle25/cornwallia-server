@@ -9,6 +9,7 @@ ww.wishid
 ,wu.firstnameval
 ,ww.reservedflg
 ,ww.reserveduserid
+,ww.completedflg
 ,wf.parent1wishesuserid
 ,wf.parent2wishesuserid
 FROM wishes.wishes ww

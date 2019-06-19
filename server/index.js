@@ -17,6 +17,8 @@ const { getAllUsers,
         getWishes,
         reserveWish,
         releaseWish,
+        completeWish,
+        reactivateWish,
         getFamilyReference,
         addWish,
         deleteWish,
@@ -174,6 +176,8 @@ app.post(`${baseUrl}/wishes/getActiveUser`, checkAuthenticated, getActiveUser);
 app.post(`${baseUrl}/wishes/getWishes`, checkAuthenticated, getWishes);
 app.post(`${baseUrl}/wishes/reserveWish`, checkAuthenticated, reserveWish);
 app.post(`${baseUrl}/wishes/releaseWish`, checkAuthenticated, releaseWish);
+app.post(`${baseUrl}/wishes/completeWish`, checkAuthenticated, completeWish);
+app.post(`${baseUrl}/wishes/reactivateWish`, checkAuthenticated, reactivateWish);
 app.post(`${baseUrl}/wishes/addWish`, checkAuthenticated, addWish);
 app.post(`${baseUrl}/wishes/deleteWish`, checkAuthenticated, deleteWish);
 app.put(`${baseUrl}/wishes/updateWish`, checkAuthenticated, updateWish);
