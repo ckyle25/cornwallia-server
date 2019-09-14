@@ -30,7 +30,8 @@ const { getAllUsers,
         getReserverEmail,
         checkEmailBirthdays,
         getAmazonWishes,
-        emailReserver } = require('./controllers/wishesController')
+        emailReserver,
+        getMyCompletedWishes } = require('./controllers/wishesController')
 const { foodGetActiveUser } = require('./controllers/foodController');
 const { checkAuthenticated } = require('./middleware/isAuthenticated');
 
@@ -84,7 +85,7 @@ passport.use(new Auth0Strategy(
     domain: process.env.AUTH_DOMAIN,
     clientID: process.env.AUTH_CLIENT_ID,
     clientSecret: process.env.AUTH_CLIENT_SECRET,
-    callbackURL: process.env.AUTH_CALLBACK_URL || 'http://localhost:3000/callback',
+    callbackURL: process.env.AUTH_CALLBACK_URL || 'http://localhost:3001/callback',
     scope: "openid email profile"
   },
   function(accessToken, refreshToken, extraParams, profile, done) {
@@ -189,6 +190,7 @@ app.put(`${baseUrl}/wishes/updateFamily`, checkAuthenticated, updateWishesFamily
 app.post(`${baseUrl}/wishes/getReserverEmail`, checkAuthenticated, getReserverEmail);
 app.post(`${baseUrl}/wishes/emailReserver`, checkAuthenticated, emailReserver);
 app.post(`${baseUrl}/wishes/getAmazonWishes`, checkAuthenticated, getAmazonWishes);
+app.post(`${baseUrl}/wishes/getMyCompletedWishes`, checkAuthenticated, getMyCompletedWishes);
 
 // Food API Endpoints
 app.post(`${baseUrl}/food/getActiveUser`, checkAuthenticated, foodGetActiveUser);

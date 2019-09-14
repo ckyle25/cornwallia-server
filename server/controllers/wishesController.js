@@ -37,6 +37,16 @@ module.exports = {
             });
     },
 
+    getMyCompletedWishes: (req, res, next) => {
+        const body = req.body;
+        const dbInstance = req.app.get('db')
+
+        dbInstance.get_my_completed_wishes([body.id])
+            .then(result => {
+                return res.status(200).send(result);
+            });
+    },
+
     reserveWish: (req, res, next) => {
       const body = req.body;
       const dbInstance = req.app.get('db');
